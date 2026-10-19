@@ -1,0 +1,777 @@
+<!doctype html>
+<html lang="en">
+
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+
+  <title>CoastLine Explorer | Discover Paradise</title>
+
+  <link rel="icon" href="img05.png" />
+  <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.8/dist/css/bootstrap.min.css" rel="stylesheet" />
+
+  <style>
+    * {
+      margin: 0;
+      padding: 0;
+      box-sizing: border-box;
+    }
+
+    body {
+      font-family: "Poppins", sans-serif;
+      background: #f4fbfb;
+      color: #222;
+    }
+
+    .navbar {
+      background-color: #007F86 !important;
+      min-height: 75px;
+      box-shadow: 0 4px 18px rgba(0, 0, 0, 0.25);
+    }
+
+    .imm {
+      display: flex;
+      align-items: center;
+      margin-left: 35px;
+    }
+
+    .imm img {
+      width: 52px;
+      height: 52px;
+      object-fit: contain;
+      margin-right: 10px;
+    }
+
+    .navbar-brand {
+      color: white !important;
+      font-size: 24px;
+      font-weight: 700;
+      letter-spacing: 1px;
+    }
+
+    .navbar-collapse {
+      justify-content: center;
+    }
+
+    .navbar-nav {
+      margin: 0 auto !important;
+      gap: 8px;
+    }
+
+    .navbar-nav .nav-link {
+      color: #f4ffff !important;
+      font-weight: 500;
+      padding: 10px 14px !important;
+      border-radius: 20px;
+      transition: all 0.3s ease;
+    }
+
+    .navbar-nav .nav-link:hover {
+      color: #7fffd4 !important;
+      background: rgba(255, 255, 255, 0.08);
+      transform: translateY(-2px);
+    }
+
+    .navbar-nav .nav-link.active {
+      color: #7fffd4 !important;
+    }
+
+    .hero {
+      position: relative;
+      height: 570px;
+      overflow: hidden;
+    }
+
+    .hero img {
+      width: 100%;
+      height: 100%;
+      object-fit: cover;
+      display: block;
+    }
+
+    .hero::after {
+      content: "";
+      position: absolute;
+      inset: 0;
+      background: linear-gradient(rgba(0, 0, 0, 0.25), rgba(0, 0, 0, 0.55));
+    }
+
+    .hero-content {
+      position: absolute;
+      z-index: 2;
+      top: 50%;
+      left: 50%;
+      transform: translate(-50%, -50%);
+      text-align: center;
+      color: white;
+      width: 90%;
+      max-width: 800px;
+    }
+
+    .hero-content h1 {
+      font-size: clamp(40px, 6vw, 70px);
+      font-weight: 700;
+      margin-bottom: 18px;
+      text-shadow: 0 4px 15px rgba(0, 0, 0, 0.5);
+    }
+
+    .hero-content p {
+      font-size: 17px;
+      line-height: 1.8;
+      margin-bottom: 28px;
+      color: #f5ffff;
+    }
+
+    .hero-buttons {
+      display: flex;
+      justify-content: center;
+      gap: 12px;
+      flex-wrap: wrap;
+    }
+
+    .hero-buttons .btn {
+      border-radius: 30px;
+      padding: 11px 25px;
+      font-size: 15px;
+      transition: 0.3s;
+    }
+
+    .hero-buttons .btn:hover {
+      transform: translateY(-3px);
+    }
+
+    .head {
+      text-align: center;
+      padding: 65px 20px 25px;
+    }
+
+    .head h2 {
+      color: rgb(6, 121, 121);
+      font-size: 36px;
+      font-weight: 700;
+      margin-bottom: 10px;
+    }
+
+    .head p {
+      color: #666;
+      font-size: 15px;
+      margin: 0;
+    }
+
+    .heading-line {
+      width: 65px;
+      height: 4px;
+      background: rgb(13, 92, 92);
+      border-radius: 10px;
+      margin: 15px auto;
+    }
+
+    .card {
+      color: #222;
+      background: rgba(255, 255, 255, 0.95);
+      border: none;
+      border-radius: 18px;
+      overflow: hidden;
+      box-shadow: 0 8px 25px rgba(0, 0, 0, 0.1);
+      transition: all 0.4s ease;
+    }
+
+    .card:hover {
+      transform: translateY(-10px);
+      box-shadow: 0 18px 40px rgba(0, 0, 0, 0.18);
+    }
+
+    .card img {
+      width: 100%;
+      height: 220px;
+      object-fit: cover;
+      transition: 0.5s ease;
+    }
+
+    .card:hover img {
+      transform: scale(1.06);
+    }
+
+    .card-body {
+      padding: 25px 20px;
+    }
+
+    .card-title {
+      color: rgb(13, 92, 92);
+      font-weight: 700;
+      font-size: 19px;
+      margin-bottom: 12px;
+    }
+
+    .card-text {
+      color: #666;
+      font-size: 14px;
+      line-height: 1.7;
+      min-height: 72px;
+    }
+
+    .card .btn {
+      border-radius: 25px;
+      padding: 8px 20px;
+      font-size: 13px;
+      transition: 0.3s;
+    }
+
+    .card .btn:hover {
+      transform: translateY(-2px);
+    }
+
+
+    .why-us {
+      background: #f4fbfb;
+    }
+
+    .feature-card {
+      background: white;
+      padding: 40px 25px;
+      border-radius: 18px;
+      text-align: center;
+      height: 100%;
+      box-shadow: 0 8px 25px rgba(0, 0, 0, 0.08);
+      transition: 0.4s ease;
+    }
+
+    .feature-card:hover {
+      transform: translateY(-10px);
+      box-shadow: 0 15px 35px rgba(0, 0, 0, 0.15);
+    }
+
+    .feature-icon {
+      font-size: 45px;
+      margin-bottom: 20px;
+    }
+
+    .feature-card h4 {
+      font-size: 20px;
+      font-weight: 700;
+      color: #0d5c5c;
+      margin-bottom: 15px;
+    }
+
+    .feature-card p {
+      color: #666;
+      font-size: 14px;
+      line-height: 1.8;
+    }
+
+
+
+    .explore-cta {
+      min-height: 400px;
+      background:
+        linear-gradient(rgba(0, 0, 0, 0.45), rgba(0, 0, 0, 0.55)),
+        url("11.jpg") center/cover no-repeat;
+
+      display: flex;
+      justify-content: center;
+      align-items: center;
+      text-align: center;
+      padding: 70px 20px;
+    }
+
+    .cta-content {
+      max-width: 750px;
+      color: white;
+    }
+
+    .cta-content h2 {
+      font-size: clamp(30px, 5vw, 48px);
+      font-weight: 700;
+      margin-bottom: 20px;
+    }
+
+    .cta-content p {
+      font-size: 16px;
+      line-height: 1.8;
+      margin-bottom: 30px;
+    }
+
+    .cta-btn {
+      display: inline-block;
+      background: #ffffff;
+      color: #0d5c5c;
+      padding: 13px 32px;
+      border-radius: 30px;
+      font-weight: 600;
+      text-decoration: none;
+      transition: 0.3s ease;
+    }
+
+    .cta-btn:hover {
+      background: #0d5c5c;
+      color: white;
+      transform: translateY(-4px);
+    }
+
+    .footer {
+      background: #062F35;
+      color: #B8D8D8;
+      padding: 45px 7% 15px;
+    }
+
+    .footer-container {
+      display: grid;
+      grid-template-columns: 2fr 1fr 1.5fr;
+      gap: 40px;
+    }
+
+    .footer h2 {
+      margin-bottom: 12px;
+    }
+
+    .footer h3 {
+      color: #36d9e8;
+      margin-bottom: 15px;
+    }
+
+    .footer p,
+    .footer a {
+      color: #c9e4e8;
+      line-height: 1.8;
+      text-decoration: none;
+      display: block;
+    }
+
+    .footer a:hover {
+      color: #36d9e8;
+    }
+
+    .footer-bottom {
+      border-top: 1px solid #ffffff33;
+      margin-top: 30px;
+      padding-top: 15px;
+      text-align: center;
+      color: #b8d5d9;
+      font-size: 14px;
+    }
+
+    @media screen and (max-width: 700px) {
+      .footer-container {
+        grid-template-columns: 1fr;
+        text-align: center;
+      }
+    }
+
+    @media (max-width: 991px) {
+      .imm {
+        margin-left: 10px;
+      }
+
+      .navbar-collapse {
+        background: rgb(13, 92, 92);
+        padding: 15px;
+        margin-top: 10px;
+        border-radius: 10px;
+      }
+
+      .navbar-nav {
+        gap: 3px;
+      }
+
+      .hero {
+        height: 520px;
+      }
+    }
+
+    @media (max-width: 576px) {
+      .imm img {
+        width: 43px;
+        height: 43px;
+      }
+
+      .navbar-brand {
+        font-size: 20px;
+      }
+
+      .hero {
+        height: 500px;
+      }
+
+      .hero-content h1 {
+        font-size: 40px;
+      }
+
+      .hero-content p {
+        font-size: 14px;
+        line-height: 1.7;
+      }
+
+      .head {
+        padding-top: 50px;
+      }
+
+      .head h2 {
+        font-size: 28px;
+      }
+
+      .card img {
+        height: 230px;
+      }
+    }
+
+
+    /* Cinematic homepage animations */
+    .hero img {
+      animation: beachZoom 15s ease-in-out infinite alternate;
+    }
+
+    @keyframes beachZoom {
+      from {
+        transform: scale(1);
+      }
+
+      to {
+        transform: scale(1.12);
+      }
+    }
+
+    .hero-content h1 {
+      animation: heroReveal .9s ease-out both;
+    }
+
+    .hero-content p {
+      animation: heroReveal .9s .22s ease-out both;
+    }
+
+    .hero-buttons {
+      animation: heroReveal .9s .42s ease-out both;
+    }
+
+    @keyframes heroReveal {
+      from {
+        opacity: 0;
+        transform: translateY(28px);
+      }
+
+      to {
+        opacity: 1;
+        transform: translateY(0);
+      }
+    }
+
+    .reveal {
+      opacity: 0;
+      transform: translateY(35px);
+      transition: opacity .75s ease, transform .75s ease;
+    }
+
+    .reveal.visible {
+      opacity: 1;
+      transform: translateY(0);
+    }
+
+    .reveal-delay-1 {
+      transition-delay: .1s;
+    }
+
+    .reveal-delay-2 {
+      transition-delay: .2s;
+    }
+
+    .reveal-delay-3 {
+      transition-delay: .3s;
+    }
+
+    .heading-line {
+      transform-origin: center;
+    }
+
+    .reveal.visible .heading-line {
+      animation: lineGrow .8s ease both;
+    }
+
+    @keyframes lineGrow {
+      from {
+        transform: scaleX(0);
+      }
+
+      to {
+        transform: scaleX(1);
+      }
+    }
+
+    .cta-btn,
+    .hero-buttons .btn {
+      transition: transform .3s ease, box-shadow .3s ease, background .3s ease;
+    }
+
+    .cta-btn:hover,
+    .hero-buttons .btn:hover {
+      box-shadow: 0 10px 25px rgba(0, 0, 0, .25);
+    }
+
+    @media (prefers-reduced-motion: reduce) {
+
+      *,
+      *::before,
+      *::after {
+        animation: none !important;
+        transition-duration: .01ms !important;
+      }
+
+      .reveal {
+        opacity: 1;
+        transform: none;
+      }
+    }
+  </style>
+</head>
+
+<body>
+  <nav class="navbar navbar-expand-lg fixed-top">
+    <div class="container-fluid">
+      <div class="imm">
+        <img src="img05.png" alt="Coastal Escape Logo" />
+      </div>
+
+      <a class="navbar-brand" href="#"> CoastLine Explorer </a>
+
+      <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarSupportedContent"
+        aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
+        <span class="navbar-toggler-icon"></span>
+      </button>
+
+      <div class="collapse navbar-collapse" id="navbarSupportedContent">
+        <ul class="navbar-nav mb-2 mb-lg-0">
+          <li class="nav-item">
+            <a class="nav-link active" href="index.html"> Home </a>
+          </li>
+
+          <li class="nav-item">
+            <a class="nav-link" href="about.html"> About </a>
+          </li>
+
+          <li class="nav-item">
+            <a class="nav-link" href="travel page.html">
+              Travel & Advertisment
+            </a>
+          </li>
+
+          <li class="nav-item">
+            <a class="nav-link" href="gallery.html"> Gallery </a>
+          </li>
+
+          <li class="nav-item">
+            <a class="nav-link" href="feedback.html"> Feedback </a>
+          </li>
+
+          <li class="nav-item">
+            <a class="nav-link" href="contact.html"> Contact </a>
+          </li>
+        </ul>
+      </div>
+    </div>
+  </nav>
+
+  <section class="hero">
+    <img src="img02.png" alt="Beautiful Beach" />
+
+    <div class="hero-content">
+      <h1>Your Coastal Escape</h1>
+
+      <p>
+        Explore stunning beaches, crystal-clear waters, golden sands, and
+        unforgettable sunsets.
+      </p>
+
+      <div class="hero-buttons">
+        <a href="travel page.html"><button class="btn btn-dark">Explore More</button></a>
+
+        <a href="gallery.html"><button class="btn btn-outline-light">View Beaches</button></a>
+      </div>
+    </div>
+  </section>
+
+  <div class="head reveal">
+    <h2>Top Destinations</h2>
+
+    <div class="heading-line"></div>
+
+    <p>Discover some of the world's most beautiful beaches.</p>
+  </div>
+
+  <div class="container my-5">
+    <div class="row justify-content-center g-4">
+      <div class="col-lg-3 col-md-6 col-sm-12 reveal reveal-delay-1">
+        <div class="card h-100">
+          <img src="img03.jpg" class="card-img-top" alt="Maldives Beach" />
+
+          <div class="card-body text-center">
+            <h5 class="card-title">Paradise Beach, Maldives</h5>
+
+            <p class="card-text">
+              Experience crystal-clear turquoise waters, soft white sands, and
+              peaceful tropical surroundings.
+            </p>
+
+            <a href="#" class="btn btn-outline-danger"> Explore More </a>
+          </div>
+        </div>
+      </div>
+
+      <div class="col-lg-3 col-md-6 col-sm-12 reveal reveal-delay-1">
+        <div class="card h-100">
+          <img src="img04.jpg" class="card-img-top" alt="Bora Bora Beach" />
+
+          <div class="card-body text-center">
+            <h5 class="card-title">Bora , French Polynesia</h5>
+
+            <p class="card-text">
+              Discover breathtaking blue lagoons, coral reefs, and
+              unforgettable island views.
+            </p>
+
+            <a href="#" class="btn btn-outline-danger"> Explore More </a>
+          </div>
+        </div>
+      </div>
+
+      <div class="col-lg-3 col-md-6 col-sm-12 reveal reveal-delay-2">
+        <div class="card h-100">
+          <img src="img06.jpg" class="card-img-top" alt="Bali Beach" />
+
+          <div class="card-body text-center">
+            <h5 class="card-title">Bali Beach, Indonesia</h5>
+
+            <p class="card-text">
+              Enjoy golden sunsets, tropical landscapes, relaxing ocean views,
+              and vibrant beach culture.
+            </p>
+
+            <a href="gallery.html" class="btn btn-outline-danger"> Explore More </a>
+          </div>
+        </div>
+      </div>
+
+      <div class="col-lg-3 col-md-6 col-sm-12 reveal reveal-delay-3">
+        <div class="card h-100">
+          <img src="img07.jpg" class="card-img-top" alt="Miami Beach" />
+
+          <div class="card-body text-center">
+            <h5 class="card-title">Miami Beach, USA</h5>
+
+            <p class="card-text">
+              Explore vibrant coastal life, beautiful sandy shores, and
+              exciting seaside activities.
+            </p>
+
+            <a href="travel page.html" class="btn btn-outline-danger"> Explore More </a>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+
+
+  <section class="why-us py-5">
+    <div class="container">
+      <div class="head reveal">
+        <h2>Why Choose Us?</h2>
+        <div class="heading-line"></div>
+        <p>Discover what makes your coastal journey special.</p>
+      </div>
+
+      <div class="row g-4 mt-3">
+        <div class="col-lg-4 col-md-6 reveal">
+          <div class="feature-card">
+            <div class="feature-icon">🌴</div>
+            <h4>Beautiful Destinations</h4>
+            <p>
+              Explore breathtaking beaches and stunning coastal destinations
+              worldwide.
+            </p>
+          </div>
+        </div>
+
+        <div class="col-lg-4 col-md-6 reveal reveal-delay-1">
+          <div class="feature-card">
+            <div class="feature-icon">🧭</div>
+            <h4>Travel Inspiration</h4>
+            <p>
+              Find inspiration and exciting ideas for your next coastal
+              adventure.
+            </p>
+          </div>
+        </div>
+
+        <div class="col-lg-4 col-md-12 reveal reveal-delay-2">
+          <div class="feature-card">
+            <div class="feature-icon">🌊</div>
+            <h4>Easy Exploration</h4>
+            <p>
+              Discover your perfect beach destination with a simple browsing
+              experience.
+            </p>
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+
+  <section class="explore-cta">
+    <div class="cta-content reveal">
+      <h2>Your Next Adventure Awaits</h2>
+
+      <p>
+        Discover breathtaking beaches, crystal-clear waters and unforgettable
+        coastal experiences.
+      </p>
+
+      <a href="travel page.html" class="cta-btn"> Explore Now → </a>
+    </div>
+  </section>
+
+  <footer class="footer">
+    <div class="footer-container">
+      <div>
+        <h2>🌊 CoastLine Explorer</h2>
+        <p>Discover. Explore. Experience.</p>
+      </div>
+
+      <div>
+        <h3>Quick Links</h3>
+        <a href="index.html">Home</a>
+        <a href="contact.html">contact</a>
+        <a href="gallery.html">Gallery</a>
+        <a href="about.html">About Us</a>
+      </div>
+
+      <div>
+        <h3>Contact Us</h3>
+        <p>📧 info@coastlineexplorer.com</p>
+        <p>📞 +92 300 1234567</p>
+        <p>📍 Karachi, Pakistan</p>
+      </div>
+    </div>
+
+    <div class="footer-bottom">
+      © 2026 CoastLine Explorer | All Rights Reserved.
+    </div>
+  </footer>
+
+  <script>
+    const revealItems = document.querySelectorAll('.reveal');
+    if ('IntersectionObserver' in window) {
+      const observer = new IntersectionObserver((entries) => {
+        entries.forEach(entry => {
+          if (entry.isIntersecting) {
+            entry.target.classList.add('visible');
+            observer.unobserve(entry.target);
+          }
+        });
+      }, { threshold: 0.12 });
+      revealItems.forEach(item => observer.observe(item));
+    } else {
+      revealItems.forEach(item => item.classList.add('visible'));
+    }
+  </script>
+  <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.8/dist/js/bootstrap.bundle.min.js"></script>
+</body>
+
+</html>

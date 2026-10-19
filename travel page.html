@@ -1,0 +1,688 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>travel page</title>
+    <link rel="icon" href="img05.png">
+    <style>
+        * {
+            padding: 0;
+            margin: 0;
+            box-sizing: border-box;
+        }
+
+
+
+        .navbar {
+            background-color: rgb(13, 92, 92) !important;
+            min-height: 75px;
+            box-shadow: 0 4px 18px rgba(0, 0, 0, 0.25);
+        }
+
+        .imm {
+            display: flex;
+            align-items: center;
+            margin-left: 35px;
+        }
+
+        .imm img {
+            width: 52px;
+            height: 52px;
+            object-fit: contain;
+            margin-right: 10px;
+        }
+
+        .navbar-brand {
+            color: white !important;
+            font-size: 24px;
+            font-weight: 700;
+            letter-spacing: 1px;
+        }
+
+        .navbar-collapse {
+            justify-content: center;
+        }
+
+        .navbar-nav {
+            margin: 0 auto !important;
+            gap: 8px;
+        }
+
+        .navbar-nav .nav-link {
+            color: #f4ffff !important;
+            font-weight: 500;
+            padding: 10px 14px !important;
+            border-radius: 20px;
+            transition: all 0.3s ease;
+        }
+
+        .navbar-nav .nav-link:hover {
+            color: #7fffd4 !important;
+            background: rgba(255, 255, 255, 0.08);
+            transform: translateY(-2px);
+        }
+
+        .navbar-nav .nav-link.active {
+            color: #7fffd4 !important;
+        }
+
+
+        .heading {
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            justify-content: center;
+
+            text-align: center;
+            margin: auto;
+            background-image: linear-gradient(rgba(141, 146, 150, 0),
+                    rgb(37, 37, 31)), url("2.jpg");
+            object-fit: cover;
+            background-size: cover;
+            background-position: center;
+            height: 600px;
+        }
+
+        .heading p {
+            align-items: center;
+            font-size: larger;
+            font-family: 'Playfair Display', serif;
+        }
+
+        .hero {
+            width: 600px;
+
+        }
+
+        .hero h1 {
+            color: rgb(240, 160, 160);
+        }
+
+        .hero p {
+            color: beige;
+        }
+
+        .beach {
+            color: chocolate;
+            font-family: 'Franklin Gothic Medium', 'Arial Narrow', Arial, sans-serif;
+        }
+
+        #btn {
+            padding: 17px 25px;
+            border-radius: 30px;
+            background-color: papayawhip;
+            font-size: larger;
+            margin-top: 10px;
+            font-weight: 700;
+        }
+
+        #btn:hover {
+            background-color: cornflowerblue;
+            transition: all 0.5s ease-in-out;
+            transform: translateY(-10px);
+        }
+
+
+
+        .travel-card {
+            border: none;
+            border-radius: 18px;
+            overflow: hidden;
+            box-shadow: 0 5px 20px rgba(0, 0, 0, 0.15);
+            transition: all 0.3s ease;
+            background-color: white;
+        }
+
+        .travel-card:hover {
+            transform: translateY(-10px);
+            box-shadow: 0 12px 30px rgba(0, 0, 0, 0.25);
+        }
+
+
+        .travel-img {
+            width: 100%;
+            height: 220px;
+            object-fit: cover;
+        }
+
+
+        .travel-card .card-body {
+            padding: 20px;
+        }
+
+        .travel-card .card-title {
+            font-weight: 700;
+            min-height: 48px;
+        }
+
+        .travel-card .card-text {
+            color: #666;
+            min-height: 48px;
+        }
+
+
+        .travel-card .btn {
+            border-radius: 25px;
+            padding: 10px 20px;
+            font-weight: 600;
+        }
+
+        .travel {
+            background: #063c4d;
+            color: white;
+            text-align: center;
+            
+        }
+          .travel2{
+            height:300px;
+            
+          }
+
+        
+
+        .travel h2 {
+            font-size: 40px;
+            margin-bottom: 15px;
+        }
+
+        .travel p {
+            margin-bottom: 30px;
+            color: #d6eef2;
+        }
+
+        .travel button {
+            background-color: rgb(233, 220, 105);
+        }
+
+        .head7{
+            text-align: center;
+            font-family: Georgia, 'Times New Roman', Times, serif;
+            font-size: xx-larger;
+            font-weight: 700;
+            color: rgb(243, 177, 78);
+        }
+
+       .footer {
+    background: #073b4c;
+    color: white;
+    padding: 45px 7% 15px;
+}
+
+.footer-container {
+    display: grid;
+    grid-template-columns: 2fr 1fr 1.5fr;
+    gap: 40px;
+}
+
+.footer h2 {
+    margin-bottom: 12px;
+}
+
+.footer h3 {
+    color: #36d9e8;
+    margin-bottom: 15px;
+}
+
+.footer p,
+.footer a {
+    color: #c9e4e8;
+    line-height: 1.8;
+    text-decoration: none;
+    display: block;
+}
+
+.footer a:hover {
+    color: #36d9e8;
+}
+
+.footer-bottom {
+    border-top: 1px solid #ffffff33;
+    margin-top: 30px;
+    padding-top: 15px;
+    text-align: center;
+    color: #b8d5d9;
+    font-size: 14px;
+}
+    @media screen and (max-width: 700px) {
+    .footer-container {
+        grid-template-columns: 1fr;
+        text-align: center;
+    }
+}
+
+
+
+        @media (max-width: 991px) {
+
+    .navbar {
+        min-height: 70px;
+    }
+
+    .imm {
+        margin-left: 15px;
+    }
+
+    .navbar-nav {
+        gap: 2px;
+        text-align: center;
+        padding: 10px 0;
+    }
+
+    .navbar-nav .nav-link {
+        padding: 8px 12px !important;
+    }
+
+    .heading {
+        height: 550px;
+        padding: 100px 25px 40px;
+    }
+
+    .hero {
+        width: 90%;
+        max-width: 600px;
+    }
+
+    .hero h1 {
+        font-size: 38px;
+    }
+
+    .hero p {
+        font-size: 17px;
+    }
+
+    .travel2 {
+        height: auto;
+        padding: 40px 20px;
+    }
+
+    .travel h2 {
+        font-size: 34px;
+    }
+
+    .head7 {
+        font-size: 36px;
+    }
+}
+
+
+@media (max-width: 767px) {
+
+    .navbar {
+        min-height: 65px;
+    }
+
+    .imm {
+        margin-left: 5px;
+    }
+
+    .imm img {
+        width: 45px;
+        height: 45px;
+    }
+
+    .navbar-brand {
+        font-size: 20px;
+    }
+
+    .navbar-nav {
+        width: 100%;
+    }
+
+    .navbar-nav .nav-link {
+        padding: 8px 10px !important;
+    }
+
+    .heading {
+        height: auto;
+        min-height: 600px;
+        padding: 120px 20px 50px;
+    }
+
+    .hero {
+        width: 100%;
+    }
+
+    .hero h1 {
+        font-size: 32px;
+        line-height: 1.2;
+    }
+
+    .hero p {
+        font-size: 15px;
+        line-height: 1.6;
+    }
+
+    #btn {
+        padding: 13px 22px;
+        font-size: 16px;
+    }
+
+    .travel2 {
+        height: auto;
+        padding: 35px 15px;
+    }
+
+    .travel h2 {
+        font-size: 30px;
+    }
+
+    .travel p {
+        font-size: 15px;
+        line-height: 1.6;
+    }
+
+    .travel button {
+        display: block;
+        width: 80%;
+        margin: 10px auto;
+    }
+
+    .head7 {
+        font-size: 32px;
+        margin-bottom: 5px;
+    }
+
+    .travel-card {
+        margin: 0 auto;
+    }
+
+    .travel-img {
+        height: 220px;
+    }
+}
+
+
+@media (max-width: 480px) {
+
+    .imm img {
+        width: 40px;
+        height: 40px;
+        margin-right: 5px;
+    }
+
+    .navbar-brand {
+        font-size: 18px;
+    }
+
+    .heading {
+        min-height: 620px;
+        padding: 110px 15px 40px;
+    }
+
+    .hero h1 {
+        font-size: 27px;
+    }
+
+    .hero p {
+        font-size: 14px;
+    }
+
+    #btn {
+        padding: 12px 20px;
+        font-size: 15px;
+    }
+
+    .travel h2 {
+        font-size: 27px;
+    }
+
+    .travel p {
+        font-size: 14px;
+    }
+
+    .travel button {
+        width: 90%;
+    }
+
+    .head7 {
+        font-size: 28px;
+    }
+
+    .travel-img {
+        height: 200px;
+    }
+}
+    </style>
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.8/dist/css/bootstrap.min.css" rel="stylesheet"
+        integrity="sha384-sRIl4kxILFvY47J16cr9ZwB07vP4J8+LH7qKQnuqkuIAvNWLzeN8tE5YBujZqJLB" crossorigin="anonymous">
+</head>
+
+<body>
+
+
+    <nav class="navbar navbar-expand-lg fixed-top">
+
+        <div class="container-fluid">
+
+
+            <div class="imm">
+                <img src="img05.png" alt="Coastal Escape Logo">
+            </div>
+
+
+            <a class="navbar-brand" href="#">
+                 CoastLine Explorer
+            </a>
+
+
+            <button class="navbar-toggler" type="button" data-bs-toggle="collapse"
+                data-bs-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false"
+                aria-label="Toggle navigation">
+
+                <span class="navbar-toggler-icon"></span>
+
+            </button>
+
+
+
+            <div class="collapse navbar-collapse" id="navbarSupportedContent">
+
+                <ul class="navbar-nav mb-2 mb-lg-0">
+
+                    <li class="nav-item">
+                        <a class="nav-link " href="index.html">
+                            Home
+                        </a>
+                    </li>
+
+                    <li class="nav-item">
+                        <a class="nav-link" href="about.html">
+                            About
+                        </a>
+                    </li>
+
+                    <li class="nav-item">
+                        <a class="nav-link active" href="travel page.html">
+                            Travel & Advertisment
+                        </a>
+                    </li>
+
+                    <li class="nav-item">
+                        <a class="nav-link" href="gallery.html">
+                            Gallery
+                        </a>
+                    </li>
+
+                    <li class="nav-item">
+                        <a class="nav-link" href="feedback.html">
+                            Feedback
+                        </a>
+                    </li>
+
+                    <li class="nav-item">
+                        <a class="nav-link" href="contact.html">
+                            Contact
+                        </a>
+                    </li>
+
+                  
+
+                </ul>
+
+            </div>
+
+        </div>
+
+    </nav>
+
+
+
+    <div class="heading">
+        <div class="hero">
+            <h1>Discover Your Perfect </h1>
+            <h1><span class="beach"> Beach Escape</span></h1><br>
+            <p>Leave the ordinary behind and discover a world of sun-kissed beaches, crystal-clear waters, and
+                unforgettable adventures. From peaceful island getaways to exciting coastal experiences, we help you
+                find the perfect destination to relax, explore, and create beautiful memories.</p><br>
+            <p>Explore the beauty. Feel the freedom. Make every journey unforgettable.</p>
+        </div>
+      <a href="gallery.html">  <button id="btn">Explore Now</button></a>
+    </div>
+
+    <br>
+    <br>
+    
+
+
+    <section class="travel">
+           <div class="travel2">
+        <h2>Plan Your Journey</h2>
+
+        <p>
+            Find convenient bus and flight options to reach your
+            favorite beach destination.
+        </p>
+
+
+       <a href="https://bookme.pk/  " target="_blank"> <button class="btn" > 🚌 Bus Travel</button></a>
+
+
+
+       <a href="https://sastaticket.pk/ " target="_blank"> <button class="btn" > ✈️ Flight Travel</button></a>
+
+        </div>
+    </section>
+
+    <br>
+    <br>
+    <br>
+
+
+    <div class="container mt-5 mb-5">
+        <div class="row g-4 justify-content-center">
+
+                   <h1 class="head7">Our Packages</h1>
+            <div class="col-lg-3 col-md-6 col-sm-12">
+                <div class="card travel-card h-100">
+                    <img src="8.jpg" class="card-img-top travel-img" alt="Skardu">
+                    <div class="card-body d-flex flex-column">
+                        <h5 class="card-title">🏔️ Skardu Adventure Package</h5>
+                        <p class="card-text">Explore mountains, lakes & valleys</p>
+                        <p>Duration: 5 Days / 4 Nights</p>
+
+                        <a href="#" class="btn btn-primary mt-auto">
+                            Price: $299
+                        </a>
+                    </div>
+                </div>
+            </div>
+
+
+            <div class="col-lg-3 col-md-6 col-sm-12">
+                <div class="card travel-card h-100">
+                    <img src="4.jpg" class="card-img-top travel-img" alt="Dubai">
+                    <div class="card-body d-flex flex-column">
+                        <h5 class="card-title">🌆 Dubai Luxury Package</h5>
+                        <p class="card-text">
+                            City tour, desert safari & Burj Khalifa
+                        </p>
+                        <p>Duration: 4 Days / 3 Nights</p>
+
+                        <a href="#" class="btn btn-primary mt-auto">
+                            Price: $499
+                        </a>
+                    </div>
+                </div>
+            </div>
+
+
+            <div class="col-lg-3 col-md-6 col-sm-12">
+                <div class="card travel-card h-100">
+                    <img src="5.jpg" class="card-img-top travel-img" alt="Hunza">
+                    <div class="card-body d-flex flex-column">
+                        <h5 class="card-title">🏔️ Hunza Valley Package</h5>
+                        <p class="card-text">
+                            Scenic valleys, forts & mountain views
+                        </p>
+                        <p>Duration: 5 Days / 4 Nights</p>
+
+                        <a href="#" class="btn btn-primary mt-auto">
+                            Price: $279
+                        </a>
+                    </div>
+                </div>
+            </div>
+
+
+            <div class="col-lg-3 col-md-6 col-sm-12">
+                <div class="card travel-card h-100">
+                    <img src="7.jpg" class="card-img-top travel-img" alt="Pakistan">
+                    <div class="card-body d-flex flex-column">
+                        <h5 class="card-title"> Pakistan Explorer Package</h5>
+                        <p class="card-text">
+                            Discover Pakistan's top destinations
+                        </p>
+                        <p>Duration: 10 Days / 9 Nights</p>
+
+                        <a href="#" class="btn btn-primary mt-auto">
+                            Price: $699
+                        </a>
+                    </div>
+                </div>
+            </div>
+
+        </div>
+    </div>
+
+
+
+<footer class="footer">
+
+    <div class="footer-container">
+
+        <div>
+            <h2>🌊 CoastLine Explorer</h2>
+            <p>Discover. Explore. Experience.</p>
+        </div>
+
+        <div>
+            <h3>Quick Links</h3>
+             <a href="index.html">Home</a>
+          <a href="contact.html">contact</a>
+          <a href="gallery.html">Gallery</a>
+          <a href="about.html">About Us</a>
+        </div>
+
+        <div>
+            <h3>Contact Us</h3>
+            <p>📧 info@coastlineexplorer.com</p>
+            <p>📞 +92 300 1234567</p>
+            <p>📍 Karachi, Pakistan</p>
+        </div>
+
+    </div>
+
+    <div class="footer-bottom">
+        © 2026 CoastLine Explorer | All Rights Reserved.
+    </div>
+
+</footer>
+   
+
+ <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.8/dist/js/bootstrap.bundle.min.js"></script>
+
+</body>
+
+</html>
